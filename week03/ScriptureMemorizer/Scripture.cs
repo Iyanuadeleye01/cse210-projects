@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
+
 public class Scripture
 {
     private Reference _reference;
     private List<Word> _words;
+
     public Scripture(Reference reference, string text)
     {
         _reference = reference;
         _words = new List<Word>();
+        
         foreach (string word in text.Split(" "))
         {
             _words.Add(new Word(word));
@@ -18,9 +21,12 @@ public class Scripture
     {
         Random rand = new Random();
         int isHiddenCount = 0;
-        while (isHiddenCount < numberToHide)
+
+        // If all words are already hidden
+        while (isHiddenCount < numberToHide && !IsCompletelyHidden())
         {
             int index = rand.Next(_words.Count);
+
             if (!_words[index].IsHidden())
             {
                 _words[index].Hide();
@@ -28,15 +34,19 @@ public class Scripture
             }
         }
     }
+
     public string GetDisplayText()
     {
-        string result = _reference.GetDisplayText() + "";
+        string result = _reference.GetDisplayText() + " "; 
+
         foreach (var word in _words)
         {
-            result += word.GetDisplayText() + "";
+            result += word.GetDisplayText() + " "; 
         }
-        return result;
+
+        return result.Trim();
     }
+
     public bool IsCompletelyHidden()
     {
         foreach (var word in _words)

@@ -16,7 +16,7 @@ public class Reference
          _book = book;
          _chapter = chapter;
          _verse = verse;
-         _endVerse = endVerse;
+         _endVerse = verse;
     }
     public string GetDisplayText()
     {
