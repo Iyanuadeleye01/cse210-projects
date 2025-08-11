@@ -1,0 +1,4 @@
+30
+SimpleGoal|Scripture|Reading the scripture everyday|10|True
+EternalGoal|Prayer|Praying every morning|20
+ChecklistGoal|  Time |To effectively manage my time|30|5|5|0
